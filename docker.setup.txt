@@ -1,0 +1,22 @@
+to run the dev locally 
+docker build -t temmix/react-docker -f Dockerfile.dev .
+
+to spin the container
+docker run -it -p 3003:3000 temmix/react-docker 
+
+to spin the container in a detach mode 
+docker run -it -d -p 3003:3000 temmix/react-docker 
+
+to stop the container
+docker stop imageId
+
+VOLUME
+to use volume for local quick updates
+docker build -t temmix/react-docker -f Dockerfile.dev .
+docker run -p 3003:3000 -v /app/node_modules -v $(pwd)./app temmix/react-docker
+
+
+FOR PRODUCTION Dockerfile file
+run the following commands to build the app and spin up Production code
+docker build .
+docker run -p 8001:80 253df6d770020aa3c9e0f75c5a717a8ea76730fc14eefd3028b1e380d65ed091
