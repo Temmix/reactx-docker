@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run -e CI=true temmix/reactx-docker npm run test  
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "reactx-docker"
+  env: "reactxdocker-env"
+  bucker_name: "elasticbeanstalk-eu-west-2-224922007415"
+  bucket_path: "reactx-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
